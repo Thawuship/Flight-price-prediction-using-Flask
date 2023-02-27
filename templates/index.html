@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+</head>
+
+
+<style>
+  input[type=text], select {
+    width: 33%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+  
+  div {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+  }
+  </style>
+
+
+
+<body>
+ <div class="login">
+	<h1 style="color:rgb(51, 13, 139);">Predict Flight Price</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form style="color:rgb(0, 0, 0);" action="{{ url_for('predict')}}"method="post">
+    	<!--<input type="text" name="experience" placeholder="Airline" required="required" />-->
+      <label for="name">Airline--------: </label>
+      <select name="Airline" id="Airline" >
+        <option value="0">AirAsia</option>
+        <option value="1">Air_India</option>
+        <option value="2">GO_FIRST</option>
+        <option value="3">Indigo</option>
+        <option value="4">SpiceJet</option>
+        <option value="5">Vistara</option>
+      </select>
+      <br>
+
+      
+
+
+      <!--<input type="text" name="test_score1" placeholder="Source City" required="required" />-->
+      <label for="name">Source City----: </label>
+      <select name="Source_City" id="Source_City" >
+        <option value="0">Bangalore</option>
+        <option value="1">Chennai</option>
+        <option value="2">Delhi</option>
+        <option value="3">Hyderabad</option>
+        <option value="4">Kolkata</option>
+        <option value="5">Mumbai</option>
+      </select><br>
+
+
+      <!--<input type="text" name="test_score5" placeholder="Destination City" required="required" />-->
+      <label for="name">Destination City--: </label>
+      <select name="Destination_City" id="Destination_City" >
+        <option value="0">Bangalore</option>
+        <option value="1">Chennai</option>
+        <option value="2">Delhi</option>
+        <option value="3">Hyderabad</option>
+        <option value="4">Kolkata</option>
+        <option value="5">Mumbai</option>
+      </select><br>
+
+
+      <!--<input type="text" name="test_score6" placeholder="Class" required="required" />-->
+      <label for="name">Class---------: </label>
+      <select name="Class" id="Class" >
+        <option value="0">Business</option>
+        <option value="1">Economy</option>
+        <option value="1">Two or More</option>
+      </select><br>
+
+      <label for="name">Duration-------: </label>
+      <input type="text" name="test_score7" placeholder="Duration" required="required" />
+      
+      
+      <br>
+      <br>
+
+      <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+      
+    </form>
+
+
+   <p style="color:rgb(51, 13, 139);">{{ prediction_text }}
+   </p>
+   
+ </div>
+
+
+</body>
+</html>
